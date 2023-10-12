@@ -22,8 +22,9 @@ class WorkAdapter(private val list: List<Work>) : RecyclerView.Adapter<WorkAdapt
         return WorkViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: WorkAdapter.WorkViewHolder, position: Int) {
-        TODO("Not yet implemented")
+    override fun onBindViewHolder(holder: WorkViewHolder, position: Int) {
+        holder.TV_worktime.text = list[position].workName
+        holder.TV_worktime.text = list[position].workTime
     }
 
     override fun getItemCount(): Int = list.size

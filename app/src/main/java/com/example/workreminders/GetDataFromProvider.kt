@@ -9,7 +9,7 @@ data class Work(val id: Int, val workName: String, val workTime: String)
 
 fun getDataFromProvider(context: Context): List<Work> {
     val workList = mutableListOf<Work>()
-    val projection = arrayOf("ID", "Name", "Time")
+    val projection = arrayOf("id", "work_name", "work_time")
 
     val uriLink = "content://com.example.workmanagement.MyContentProvider/works"
     val uri = Uri.parse(uriLink)
@@ -17,9 +17,10 @@ fun getDataFromProvider(context: Context): List<Work> {
     context.contentResolver.query(uri, projection, null, null, null)
         .use{ cursor ->         // use{} sẽ tự close cho cursor
             while (cursor!!.moveToNext()){
-                val id = cursor.getInt(cursor.getColumnIndexOrThrow("ID"))
-                val wname = cursor.getString(cursor.getColumnIndexOrThrow("Name"))
-                val wtime = cursor.getString(cursor.getColumnIndexOrThrow("Time"))
+                // các cột truy vấn phải khớp với tên trong db
+                val id = cursor.getInt(cursor.getColumnIndexOrThrow("id"))
+                val wname = cursor.getString(cursor.getColumnIndexOrThrow("work_name"))
+                val wtime = cursor.getString(cursor.getColumnIndexOrThrow("work_time"))
                 val work = Work(id, wname, wtime)
                 workList.add(work)
             }
