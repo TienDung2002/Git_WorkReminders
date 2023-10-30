@@ -1,6 +1,7 @@
 package com.example.workreminders
 import android.content.Context
 import android.net.Uri
+import android.util.Log
 
 
 // uri bài quản lý công việc: content://com.example.workmanagement.MyContentProvider/works
@@ -22,6 +23,7 @@ fun getDataFromProvider(context: Context): List<Work> {
                 val wname = cursor.getString(cursor.getColumnIndexOrThrow("work_name"))
                 val wtime = cursor.getString(cursor.getColumnIndexOrThrow("work_time"))
                 val work = Work(id, wname, wtime)
+
                 workList.add(work)
             }
     }

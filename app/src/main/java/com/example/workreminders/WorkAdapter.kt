@@ -23,7 +23,7 @@ class WorkAdapter(private val list: List<Work>) : RecyclerView.Adapter<WorkAdapt
     }
 
     override fun onBindViewHolder(holder: WorkViewHolder, position: Int) {
-        holder.TV_worktime.text = list[position].workName
+        holder.TV_workname.text = list[position].workName
         holder.TV_worktime.text = list[position].workTime
     }
 
